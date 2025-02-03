@@ -1,0 +1,51 @@
+.menu {
+	font-family: dosvga;
+	font-size: 16px;
+	color: #333;
+	background-color: #efefef;
+	text-align: left;
+}
+
+.rootmenu {
+	background-color: #efefef;
+	padding-left: 8px;
+	border-bottom: 1px solid #ddd;
+}
+
+.dropmenu {
+	position: absolute;
+	display: none;
+    	border: 1px solid #999;
+	padding: 2px;
+	z-index: 100;
+}
+
+.menu-item {
+	padding: 4px 8px;
+    cursor: pointer;
+}
+
+.disabled { color: #999; }
+
+.menu-separator {
+	border-top: 1px solid #999;
+	margin: 4px 2px;
+}
+
+.submenu:after {
+	content: " >"
+}
+
+.rootmenu .menu-item {
+	display: inline-block;
+}
+
+.menu-item:hover {
+	background-color: #336699;
+	color: #fff;
+}
+
+.disabled:hover {
+	background-color: #efefef;
+	color: #999;
+}
