@@ -86,8 +86,8 @@ Data "</div>"
 
 dlg_about:
 Data "<div style='min-width:250px'>GX Map Maker</div>"
-Data "<div>Version: 0.8.0</div><br/>"
-Data "<div><span style='font-family:courier new,sans-serif; font-size:18px'>&copy;</span> 2024 boxgaming</div><hr/>"
+Data "<div>Version: 0.6.0</div><br/>"
+Data "<div><span style='font-family:courier new,sans-serif; font-size:18px'>&copy;</span> 2025 boxgaming</div><hr/>"
 Data "<button id='about-ok' style='font-family:dosvga; font-size: 16px; padding: 8px'> OK </button>"
 Data "</div>"
 
@@ -196,11 +196,7 @@ Sub InitMenu (parent As Object)
     MNU.AddSeparator menu
     MNU.AddMenuItem menu, "Open", sub_OnOpen
     mnuSave = MNU.AddMenuItem(menu, "Save", sub_OnSave)
-    'Dom.Alert mnuSave.classList
     MNU.EnableMenuItem mnuSave, GX_FALSE
-    'MNU.AddMenuItem menu, "Save As..."
-    'MNU.AddSeparator menu
-    'MNU.AddMenuItem menu, "Close"
     
     menu = MNU.AddMenu(main, "Map")
     mnuMapZoomIn = MNU.AddMenuItem(menu, "Zoom In", sub_OnMapZoomIn)
@@ -588,9 +584,6 @@ Sub ResizeControls (e)
     End If
     
     tileset.style.width = twidth + "px"
-    'tileset.style.height = (Dom.Container().clientHeight - 303) + "px"
-    'tileset.style.height = (Dom.Container().clientHeight - 330) + "px"
-    'tileset.style.height = (Dom.Container().clientHeight - 450) + "px"
     tileset.style.height = (Dom.Container().clientHeight - tilePanelOffset) + "px"
     
     resizePanel.style.width = (twidth - 16) + "px"
@@ -621,8 +614,8 @@ Function GetTilePosAt (x As Integer, y As Integer)
             offset = 0
         End If
 
-        r.y = _Round((2 * y) / tileHeightHalf) '+ _Round((2 * GXSceneY) / tileHeightHalf)
-        r.x = _Round((x - offset) / GXTilesetWidth) '+ _Round(GXSceneX / GXTilesetWidth)
+        r.y = _Round((2 * y) / tileHeightHalf) 
+        r.x = _Round((x - offset) / GXTilesetWidth)
     End If
     
     GetTilePosAt = r
@@ -1167,8 +1160,6 @@ Sub OnCreateMap
     Console.Log "Height:  " + dlgNew.tsHeight.value
     Console.Log "ISO:     " + iso
 
-    'Dom.Alert Val(dlgNew.layers.value)
-
     If Val(dlgNew.columns.value) < 1 Then
         MsgBox "Please specify a value greater than 0.", "Invalid Entry for Columns"
         Exit Sub
@@ -1391,8 +1382,6 @@ Sub MsgBox (msgText As String, msgTitle As String)
     If msgTitle Then
         mtitle = Dom.Get("msg-title")
         mtitle.innerHTML = msgTitle
-    'Else
-    '    mtitle.innerHTML = "&nbsp;"
     End If
 $If Javascript Then
     dlgMsg.showModal();
